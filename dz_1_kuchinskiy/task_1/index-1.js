@@ -2,8 +2,9 @@
 
 let a = prompt('введите число 1')
 let b = prompt('введите число 2') 
-console.log((Number(a)) + (Number(b)));
+console.log(Number(a) + Number(b));
 console.log(a - b);
 console.log(a / b);
 console.log(a * b);
+
 

@@ -8,23 +8,19 @@
 
 
 const logIn = prompt("Enter username");
+let password = "mySuperPassword";
 
-switch (logIn) {
-    case "admin":
+if (logIn == "admin") {
+    console.log("Matches");
+    prompt("Enter password");
+    if (password == "mySuperPassword") {
         console.log("Matches");
-        break;
-    default:
+        alert("login successfully");
+    } else {
         alert("You do not have access to the site panel");
         console.log("No access");
-}
-
-let password = prompt("Enter password");
-
-switch (password) {
-    case "mySuperPassword":
-        console.log("Matches");
-        break;
-    default:
-        alert("You do not have access to the site panel");
-        console.log("No access");
+    }
+} else {
+    alert("You do not have access to the site panel");
+    console.log("No access");
 }

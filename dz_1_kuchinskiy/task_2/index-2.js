@@ -7,10 +7,7 @@ const userfirstValue = +prompt('введите первое число');
 const usersecondValue = +prompt('введите второе число');
 
 if (userfirstValue>usersecondValue || usersecondValue>userfirstValue) {
-    console.log(false);
+    console.log(userfirstValue == usersecondValue);
 }
-else
-console.log(true);
-
 
 
