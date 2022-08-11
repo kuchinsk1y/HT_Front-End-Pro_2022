@@ -17,14 +17,13 @@ if (number1 == number2 || number2 == number3 || number1 == number3) {
 
 if (number3 == number2) {
     console.log("The second and third numbers are the same");
-} else if (number1 == number2) {
-    console.log("The first and second numbers are the same");
-} else if (number1 == number3) {
+} else if (number1 == number2 != number1 == number3) {
     console.log("The first and third numbers are the same");
+} else if (number1 == number3 != number1 == number2) {
+    console.log("The first and second numbers are the same");
 } else {
     console.log("No identical numbers");
 }
-
 
 
 
