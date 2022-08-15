@@ -7,14 +7,28 @@
 
 
 let flag = true;
-let numbersSet = [];
+let numSet = [];
 
 while (flag){
     number = prompt();
     flag = (number == null) ? false : true;  
-    numbersSet.push(number);
+    if (flag === false){
+        break;
+    }
+    numSet.push(number);
     console.log(number);
 }
-console.log(numbersSet);
-numbersSet.splice(3,2);
-console.log(numbersSet);
+console.log(`Debug message: Array from keyboard: ${numSet}`);
+
+
+function compareNumeric(a, b) {
+    if (a > b) return 1;
+    if (a == b) return 0; 
+    if (a < b) return -1; 
+}
+numSet.sort(compareNumeric);
+console.log(`Debug message: Sort: ${numSet}`);
+numSet.splice(1,3);
+console.log(`Debug message: Delete elem. : ${numSet}`);
+
+

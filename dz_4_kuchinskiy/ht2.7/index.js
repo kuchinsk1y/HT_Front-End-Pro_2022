@@ -17,3 +17,6 @@ for (let i = 0; i < numsArray.length; i++) {
   }
 }
 console.log(numsArray);
+
+
+
