@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>To Do List</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@1,500&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div id="myDIV" class="header">
+        <h1>To Do List</h1>
+        <input type="text" id="myInput" placeholder="Add a new task..." />
+        <span onclick="NewTask()" class="addBtn">Add</span>
+      </div>
+      <ul id="myUL">
+        <li class="checked">Physical jerks</li>
+        <li>Breakfast</li>
+        <li>Read a book</li>
+        <li>Take out the trash</li>
+        <li>Go to the store</li>
+      </ul>
+    </div>
+  </body>
+  <script src="./index.js"></script>
+</html>
