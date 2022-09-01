@@ -1,22 +1,28 @@
 body {
   margin: 0;
   min-width: 250px;
-  background: rgb(2, 0, 36);
   background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(80, 25, 163, 1) 0%,
-    rgba(92, 28, 170, 0.7791491596638656) 0%,
-    rgba(7, 42, 106, 1) 0%,
-    rgba(8, 35, 138, 1) 11%,
-    rgba(30, 30, 179, 0.9164040616246498) 30%,
-    rgba(22, 86, 166, 1) 38%,
-    rgba(0, 212, 255, 1) 57%,
-    rgba(26, 195, 229, 1) 73%,
-    rgba(35, 189, 221, 1) 85%,
-    rgba(44, 183, 212, 1) 96%
+    315deg,
+    rgba(101, 0, 94, 1) 3%,
+    rgba(60, 132, 206, 1) 38%,
+    rgba(48, 238, 226, 1) 68%,
+    rgba(255, 25, 25, 1) 98%
   );
+  animation: gradient 15s ease infinite;
+  background-size: 400% 400%;
+  background-attachment: fixed;
+}
 
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
 }
 
 * {
@@ -46,42 +52,33 @@ body {
 }
 
 h1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 0px;
-    font-weight: normal;
-    text-transform: uppercase;
-    cursor: pointer;
-    font-size: 40px;
-    text-shadow: -1px -1px #FFF,
-    -2px -2px #FFF,
-    -1px 1px #FFF,
-    -2px 2px #FFF,
-    1px 1px #FFF,
-    2px 2px #FFF,
-    1px -1px #FFF,
-    2px -2px #FFF,
-    -3px -3px 2px #BBB,
-    -3px 3px 2px #BBB,
-    3px 3px 2px #BBB,
-    3px -3px 2px #BBB;
-    color: steelblue;
-    transition: all 1s;
-    font-family: 'Bebas Neue', cursive;
-    font-family: 'IBM Plex Mono', monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0px;
+  font-weight: normal;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 40px;
+  text-shadow: -1px -1px #fff, -2px -2px #fff, -1px 1px #fff, -2px 2px #fff,
+    1px 1px #fff, 2px 2px #fff, 1px -1px #fff, 2px -2px #fff, -3px -3px 2px #bbb,
+    -3px 3px 2px #bbb, 3px 3px 2px #bbb, 3px -3px 2px #bbb;
+  color: steelblue;
+  transition: all 1s;
+  font-family: "Bebas Neue", cursive;
+  font-family: "IBM Plex Mono", monospace;
 }
 
 h1:hover {
-    color: rgb(10, 207, 59);
+  color: rgb(10, 207, 59);
 }
 
 ul {
   margin: 0;
   padding: 0;
   width: 500px;
-  font-family: 'Bebas Neue', cursive;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "Bebas Neue", cursive;
+  font-family: "IBM Plex Mono", monospace;
 }
 
 ul li {
@@ -166,4 +163,48 @@ input {
 
 .addBtn:hover {
   background-color: #bbb;
+}
+
+.wave {
+  background: rgb(255 255 255 / 25%);
+  border-radius: 1000% 1000% 0 0;
+  position: fixed;
+  width: 200%;
+  height: 12em;
+  animation: wave 10s -3s linear infinite;
+  transform: translate3d(0, 0, 0);
+  opacity: 0.8;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+  bottom: -1.25em;
+  animation: wave 18s -1s linear reverse infinite;
+  opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+  bottom: -2.5em;
+  animation: wave 20s -1s reverse infinite;
+  opacity: 0.9;
+}
+
+@keyframes wave {
+  2% {
+    transform: translateX(1);
+  }
+  25% {
+    transform: translateX(-25%);
+  }
+  50% {
+    transform: translateX(-50%);
+  }
+  75% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(1);
+  }
 }
