@@ -13,6 +13,11 @@ body {
   background-attachment: fixed;
 }
 
+.container {
+  margin-left: 200px;
+  margin-top: 200px;
+}
+
 @keyframes gradient {
   0% {
     background-position: 0% 0%;
@@ -23,29 +28,6 @@ body {
   100% {
     background-position: 0% 0%;
   }
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
-  margin-left: 125px;
-  text-transform: uppercase;
-  cursor: pointer;
-  font-size: 40px;
-  text-shadow: -1px -1px #fff, -2px -2px #fff, -1px 1px #fff, -2px 2px #fff,
-    1px 1px #fff, 2px 2px #fff, 1px -1px #fff, 2px -2px #fff, -3px -3px 2px #bbb,
-    -3px 3px 2px #bbb, 3px 3px 2px #bbb, 3px -3px 2px #bbb;
-  color: steelblue;
-  transition: all 1s;
-  font-family: "Bebas Neue", cursive;
-  font-family: "IBM Plex Mono", monospace;
-}
-h1:hover {
-  color: rgb(10, 207, 59);
 }
 
 .wave {
@@ -92,126 +74,101 @@ h1:hover {
   }
 }
 
-header {
-  font-size: 1.5rem;
-}
-header,
-form {
-  margin-bottom: -25px;
+h1 {
+  background-color: rgb(57, 57, 196);
+  width: 530px;
   display: flex;
-  align-items: center;
-}
-form input,
-form button {
-  padding: 0.5em;
-  font-size: 2rem;
-  border: 1px solid green;
-  border-radius: 10px;
-}
-form button {
-  color: rgb(20, 20, 190);
-  background: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.todo-container {
-  display: flex;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  padding: 15px;
   justify-content: center;
-  align-items: center;
-}
-.todo-list {
-  width: 483px;
-  list-style: none;
-  margin-top: 25px;
-}
-.todo {
-  margin: 0.5rems;
-  background-color: white;
-  color: black;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 0.5s ease;
-}
-.todo li {
-  flex: 1;
-}
-
-.trash-btn,
-.complete-btn {
-  background-color: red;
-  color: white;
-  border: none;
-  padding: 1rem;
+  text-transform: uppercase;
   cursor: pointer;
-  font-size: 1rem;
-}
-.complete-btn {
-  background-color: rgb(25, 161, 25);
-}
-
-.todo-item {
-  padding: 0rem 0.5rem;
-}
-
-.fa-trash,
-.fa-check {
-  pointer-events: none;
+  font-size: 40px;
+  text-shadow: -1px -1px #fff, -2px -2px #fff, -1px 1px #fff, -2px 2px #fff,
+    1px 1px #fff, 2px 2px #fff, 1px -1px #fff, 2px -2px #fff, -3px -3px 2px #bbb,
+    -3px 3px 2px #bbb, 3px 3px 2px #bbb, 3px -3px 2px #bbb;
+  color: steelblue;
+  transition: all 1s;
+  font-family: "Bebas Neue", cursive;
+  font-family: "IBM Plex Mono", monospace;
 }
 
-.completed {
+h1:hover {
+  color: rgb(10, 207, 59);
+}
+
+.line-through {
   text-decoration: line-through;
-  opacity: 0.5;
+  color: rgb(179, 174, 174);
 }
 
-.fall {
-  transform: translateY(8rem) rotateZ(20deg);
-  opacity: 0;
-}
-
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  outline: none;
-  border: none;
-}
-.select {
-  margin: 1rem;
-  position: relative;
-  margin-top: 149px;
-  margin-left: -480px;
-}
-.select::after {
-  content: "\25BC";
-  position: absolute;
-  background-color: #2c11c5;
-  top: 0;
-  right: 0;
-  padding: 1rem;
-  pointer-events: none;
-  transition: all 0.3s ease;
-}
-select {
-  color: #070a88;
-  cursor: pointer;
-  height: 50px;
-  width: 148px;
-}
-
-.select:hover::after {
-  background-color: rgb(29, 64, 219);
-  color: white;
-}
-.container {
-  margin-left: 120px;
-  margin-top: 120px;
-  background-color: #4479eb;
-  padding: 30px 40px;
-  color: white;
+p {
+  font-size: 25px;
   text-align: center;
-  width: 558px;
-  border-radius: 20px;
-  margin-bottom: 45px;
+  width: 380px;
+}
+
+form {
+  background-color: rgb(34, 31, 202);
+  display: flex;
+  align-items: center;
+  height: 25px;
+  justify-content: space-between;
+  width: 530px;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.checkbox {
+  width: 36px;
+  height: 36px;
+  margin-right: 20px;
+}
+
+.wrapper {
+  background-color: rgb(34, 31, 202);
+  display: flex;
+  align-items: center;
+  height: 25px;
+  justify-content: flex-end;
+  width: 530px;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  margin-left: 200px;
+}
+
+.task {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+  margin-top: 26px;
+  margin-right: 15px;
+}
+
+#btnAddTask {
+  height: 36px;
+  width: 90px;
+}
+
+.removeBtn {
+  height: 36px;
+  width: 90px;
+}
+
+.none {
+  display: none;
+}
+
+.select-style {
+  height: 36px;
+  width: 90px;
 }

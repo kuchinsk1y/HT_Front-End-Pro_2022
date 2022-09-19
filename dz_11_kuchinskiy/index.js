@@ -1,94 +1,138 @@
-const todoInput = document.querySelector(".todo-input");
-const todoButton = document.querySelector(".todo-button");
-const todoList = document.querySelector(".todo-list");
-const filterOption = document.querySelector(".filter-todo");
-const tasksArray = [];
+"use stict";
 
-// ======== FunctionS =========
-todoButton.addEventListener("click", addTodo);
-todoList.addEventListener("click", deleteCheck);
-filterOption.addEventListener("click", filterTodo);
+let text;
+let i = 0;
+const taskArray = [];
 
-// ============ function addTodo(event) ==========
+const form = document.getElementById("form");
 
-function addTodo(event) {
+form.addEventListener("submit", function (event) {
+  i += 1;
   event.preventDefault();
-
-  const todoDiv = document.createElement("div");
-  todoDiv.classList.add("todo");
-
-  // ========== isDone ===========
+  if (this.elements[0].value.length === 0) {
+    alert("You cant add empty field!");
+    return;
+  } else if (this.elements[0].value.length > 20) {
+    alert("Your task is too long!");
+    return;
+  }
 
   const newTask = {
-    id: tasksArray.length === 0 ? 0 : tasksArray[tasksArray.length - 1].id + 1,
-    text: todoInput.value.trim(),
-    isDone: Boolean(),
+    id: taskArray.length === 0 ? 0 : taskArray[taskArray.length - 1].id + 1,
+    name: form.elements[0].value,
+    isDone: false,
   };
-  tasksArray.push(newTask);
-  console.log(tasksArray);
 
-  const newTodo = document.createElement("li");
-  newTodo.innerText = todoInput.value;
-  newTodo.classList.add("todo-item");
-  todoDiv.appendChild(newTodo);
+  taskArray.push(newTask);
 
-  const completedButton = document.createElement("button");
-  completedButton.innerHTML = '<i class="fas fa-check"></i>';
-  completedButton.classList.add("complete-btn");
-  todoDiv.appendChild(completedButton);
+  console.log(taskArray);
 
-  const trashButton = document.createElement("button");
-  trashButton.innerHTML = "X";
-  trashButton.classList.add("trash-btn");
-  todoDiv.appendChild(trashButton);
+  const div = createNode("div", [
+    { name: "class", value: "wrapper" },
+    { name: "data-id", value: newTask.id },
+  ]);
+  document.body.appendChild(div);
 
-  todoList.appendChild(todoDiv);
-  todoInput.value = "";
-}
+  text = this.elements[0].value;
 
-//  ============ function deleteCheck(e) ============
+  const field = createNode("p", [{ name: "class", value: "default" }]);
+  field.innerText = text;
+  div.appendChild(field);
 
-function deleteCheck(e) {
-  const item = e.target;
+  const checkbox = createNode("input", [
+    { name: "type", value: "checkbox" },
+    { name: "name", value: "checkbox" },
+    { name: "class", value: "checkbox" },
+  ]);
+  div.appendChild(checkbox);
 
-  if (item.classList[0] === "trash-btn") {
-    const todo = item.parentElement;
-    todo.classList.add("fall");
-    todo.addEventListener("transitionend", function () {
-      todo.remove();
-    });
-  }
+  const removeBtn = createNode("button", [
+    { name: "id", value: `btnRemoveTask${i}` },
+    { name: "class", value: "removeBtn" },
+  ]);
+  removeBtn.innerText = "Remove";
+  div.appendChild(removeBtn);
 
-  // CHECK
-  if (item.classList[0] === "complete-btn") {
-    const todo = item.parentElement;
-    todo.classList.toggle("completed");
-  }
-}
+  const btnRemoveTask = document.getElementById(`btnRemoveTask${i}`);
+  btnRemoveTask.addEventListener("click", removeField);
 
-//  ============ function filterTodo(e) ============
+  checkbox.addEventListener("change", function () {
+    const wrapper = this.closest(".wrapper");
+    const id = wrapper.getAttribute("data-id");
 
-function filterTodo(e) {
-  const todos = todoList.childNodes;
-  todos.forEach(function (todo) {
-    switch (e.target.value) {
-      case "all":
-        todo.style.display = "flex";
-        break;
-      case "completed":
-        if (todo.classList.contains("completed")) {
-          todo.style.display = "flex";
-        } else {
-          todo.style.display = "none";
-        }
-        break;
-      case "uncompleted":
-        if (!todo.classList.contains("completed")) {
-          todo.style.display = "flex";
-        } else {
-          todo.style.display = "none";
-        }
-        break;
+    const task = taskArray.find((taskItem) => taskItem.id == id);
+    task.isDone = this.checked;
+
+    if (task.isDone) {
+      field.setAttribute("class", "line-through ");
+      console.log("Checkbox is checked..");
+    } else {
+      field.setAttribute("class", "");
+      console.log("Checkbox is not checked..");
     }
   });
+
+  this.elements[0].value = "";
+
+  function removeField() {
+    field.remove();
+    removeBtn.remove();
+    checkbox.remove();
+    div.remove();
+  }
+});
+
+function createNode(tagName, attributes) {
+  const el = document.createElement(tagName);
+  attributes.forEach(({ name, value }) => {
+    el.setAttribute(name, value);
+  });
+  return el;
 }
+
+select.addEventListener("change", function () {
+  switch (this.value) {
+    case "done":
+      console.log(this.value);
+      for (let i = 0; i < taskArray.length; i++) {
+        if (taskArray[i].isDone == false) {
+          const element = document.querySelector(`[data-id="${i}"]`);
+
+          element.setAttribute("class", "none");
+        }
+      }
+      for (let i = 0; i < taskArray.length; i++) {
+        if (taskArray[i].isDone != false) {
+          const element = document.querySelector(`[data-id="${i}"]`);
+
+          element.setAttribute("class", "wrapper");
+        }
+      }
+      break;
+    case "inProgress":
+      console.log(this.value);
+      for (let i = 0; i < taskArray.length; i++) {
+        if (taskArray[i].isDone != false) {
+          const element = document.querySelector(`[data-id="${i}"]`);
+
+          element.setAttribute("class", "none");
+        }
+      }
+      for (let i = 0; i < taskArray.length; i++) {
+        if (taskArray[i].isDone == false) {
+          const element = document.querySelector(`[data-id="${i}"]`);
+
+          element.setAttribute("class", "wrapper");
+        }
+      }
+      break;
+    case "all":
+      console.log(this.value);
+      for (let i = 0; i < taskArray.length; i++) {
+        const element = document.querySelector(`[data-id="${i}"]`);
+
+        element.setAttribute("class", "wrapper");
+      }
+      break;
+  }
+});
